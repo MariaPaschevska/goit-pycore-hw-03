@@ -2,6 +2,7 @@ from datetime import datetime
 import re
 
 def get_days_from_today(date) -> int:
+    # Паттерн для дати у форматі 'РРРР-ММ-ДД'
     date_pattern = r"\d{4}-\d{2}-\d{2}"
     match = re.search(date_pattern, str(date))
 
@@ -10,8 +11,9 @@ def get_days_from_today(date) -> int:
             input_date = datetime.strptime(match.group(), "%Y-%m-%d")
             current_date = datetime.today()
             days_diff = input_date - current_date
-            print(days_diff.days)
+
             return days_diff.days
+        
         except ValueError:
             print(f"Невалідна дата: {match.group()}")
             return None
